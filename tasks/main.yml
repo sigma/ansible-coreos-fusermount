@@ -1,0 +1,17 @@
+---
+- name: Make sure install dir exists
+  sudo: yes
+  file: path={{fusermount_install_dir}} state=directory
+
+- name: Stat fusermount
+  stat: path="{{fusermount_install_dir}}/fusermount" checksum_algorithm=sha1
+  register: st
+    
+- name: Install fusermount
+  shell: >-
+    docker run {{fusermount_image}}:{{fusermount_tag}} cat {{fusermount_image_path}} | sudo tee {{fusermount_install_dir}}/fusermount > /dev/null
+  when: st.stat.checksum|default('None') != fusermount_sha1
+
+- name: Setuid
+  sudo: yes
+  file: path={{fusermount_install_dir}}/fusermount mode=4755
