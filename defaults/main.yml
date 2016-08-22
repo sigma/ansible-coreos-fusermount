@@ -1,6 +1,6 @@
 ---
 fusermount_image: sigma/static-fusermount
-fusermount_tag: 2.9.5
-fusermount_sha1: 10a2638d4bcb95ec355c06b4fdb66c9334b2fad6
+fusermount_tag: 2.9.7
+fusermount_sha1: d52987668037fc2ebca5f55aed995ae354f89a0a
 fusermount_image_path: /usr/local/bin/fusermount
 fusermount_install_dir: /opt/bin
